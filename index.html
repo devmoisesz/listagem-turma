@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listagem de uma Turma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Turma</h1>
+    </header>
+    <section>
+        <div class="container">
+            <p>Informe nome do aluno: <input type="text" name="nome" id="nome"></p>
+            <p>Informe a Primeira Nota: <input type="number" name="nota1" id="nota1"></p>
+            <p>Informe a Segunda Nota: <input type="number" name="nota2" id="nota2"></p>
+            <button onclick="adicionar()">Adicionar</button> <br>
+            <select id="selalunos" size="15"></select>
+            <br>
+            <button onclick="finalizar()">Média da Turma</button>
+        </div>
+        <div id="res">
+
+        </div>
+    </section>
+    <footer></footer>
+    <script src="logic.js"></script>
+</body>
+</html>
