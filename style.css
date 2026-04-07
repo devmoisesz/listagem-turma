@@ -1,8 +1,17 @@
 body{
-    background-color: aquamarine;
+    background-color: linear-gradient(135deg, #667eea, #764ba2);
+    font-family: Arial, Helvetica, sans-serif;
 }
 header{
-    color: white;
+    font-size: 2.5em;
+    margin-top: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+h1{
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #222;
     text-align: center;
 }
 select{
@@ -11,15 +20,50 @@ select{
 }
 section{
     background-color: white;
-    border-radius: 10px;
-    border-width: 4px 5px 10px 9px;
-    box-shadow: 1px 1px 10px 1px green;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);;
     text-align: center;
-    height: 450px;
-    width: 550px;
-    margin: auto;
+    width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+}
+input{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+button{
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #555;
 }
 p{
     margin-bottom: 5px;
     margin-top: 5px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th{
+    background-color: #333;
+    color: white;
+    padding: 8px;
+}
+td{
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: center;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2;
 }
