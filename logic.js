@@ -1,62 +1,72 @@
-let nomev = []
-let nota1v = []
-let nota2v = []
+let alunos = []
+
+function renderizarAlunos(){
+    let corpo = document.getElementById('corpoTabela')
+    corpo.innerHTML = ''
+    alunos.forEach((aluno, index) => {
+        let tr = document.createElement('tr') //tr adiciona linha
+        let tdNome = document.createElement('td') //td adiciona coluna
+        tdNome.textContent = aluno.nome
+        let td1Nota = document.createElement('td')
+        td1Nota.textContent = aluno.primeiranota
+        let td2Nota = document.createElement('td')
+        td2Nota.textContent = aluno.segundanota
+        let tdMedia = document.createElement('td')
+        tdMedia.textContent = aluno.media.toFixed(2)
+        let tdstatus = document.createElement('td')
+        tdstatus.textContent = aluno.status
+
+        tr.appendChild(tdNome)
+        tr.appendChild(td1Nota)
+        tr.appendChild(td2Nota)
+        tr.appendChild(tdMedia)
+        tr.appendChild(tdstatus)
+        corpo.appendChild(tr)
+    })
+}
+function verificarinput(x, y, z){
+    if(x == "" || y == 0 || z == 0){
+        alert("[ERRO] FALTAM DADOS!, Preencha os Dados que estão faltando!")
+        return false
+    } else{
+        return true
+    }
+}
+function definirStatus(x){
+    if(x >= 6){
+        return "Aprovado"
+    }
+    else{
+        return "Reprovado"
+    } //retorna status do aluno
+}
 
 function adicionar(){
-    let nome = document.getElementById('nome')
-    let num1 = document.getElementById('nota1')
-    let num2 = document.getElementById('nota2')
-    let listalunos = document.getElementById('selalunos')
-    if(nome.value == "" || num1.value.length == 0 || num2.value.length == 0){
-        alert('[ERRO] Preencha os dados!')
-        return
-    } if(nomev.includes(nome.value)){
-        alert('Aluno já adicionado')
+    // Manipulando o DOM, pega os valores digitados nos inputs do index.html
+    let nome = document.getElementById('nome') 
+    let nota1 = document.getElementById('nota1')
+    let nota2 = document.getElementById('nota2')
+    
+    if(!verificarinput(nome.value, Number(nota1.value), Number(nota2.value))){
         return
     }
-        let nota1 = Number(num1.value)
-        let nota2 = Number(num2.value)
-        var media = (nota1 + nota2) / 2
-
-        nomev.push(nome.value)
-        nota1v.push(nota1)
-        nota2v.push(nota2)
-
-        let item = document.createElement('option')
-        item.textContent = `${nome.value} tem a média ${media}`
-        item.value = `alu${media}`
-        listalunos.appendChild(item)
-
-        nome.value = ''
-        num1.value = ''
-        num2.value = ''
-        nome.focus()
-}
-function finalizar(){
-    let res = document.querySelector('div#res')
-    if(nomev.length == 0){
-        alert('Adicione valores antes de finalizar')
-        return
+    
+    let media = (Number(nota1.value) + Number(nota2.value)) / 2 //define a média
+    let status = definirStatus(media)// chama a função pra definir status do aluno
+    
+    //cria um objeto com valores que serão passado pro o array
+    const aluno = {
+        nome: nome.value,
+        primeiranota: Number(nota1.value),
+        segundanota: Number(nota2.value),
+        media: media,
+        status: status
     }
-    let soma = 0
+    alunos.push(aluno) //puxa os valores do objeto definidos acima
 
-    //calcula a média da turma
-    for(let i = 0;i < nomev.length;i++){
-        let mediavet = (nota1v[i] + nota2v[i]) / 2
-        soma += mediavet
-    }
-
-    let mediaTurma = soma / nomev.length
-
-    //conta quantos alunos acima da média tem
-    let tot = 0
-    for(let i =0;i < nomev.length; i++){
-        let media = (nota1v[i] + nota2v[i]) / 2
-        if(media > mediaTurma){
-            tot++
-        }
-    }
-
-    res.innerHTML = `A média da turma é ${mediaTurma.toFixed(2)}<br>`
-    res.innerHTML += `Temos ${tot} alunos acima da média`
+    nome.value = ''
+    nota1.value = ''
+    nota2.value = ''
+    nome.focus()
+    renderizarAlunos()
 }

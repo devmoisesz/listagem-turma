@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de uma Turma</title>
+    <title>Listagem de Turma: Aprovados e Reprovados</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,18 +16,18 @@
             <p>Informe a Primeira Nota: <input type="number" name="nota1" id="nota1"></p>
             <p>Informe a Segunda Nota: <input type="number" name="nota2" id="nota2"></p>
             <button onclick="adicionar()">Adicionar</button>
-            <button onclick="finalizar()">Finalizar</button>
-            <button onclick="remover()">Remover</button>
+            <button onclick="resultado()">Resultado</button>
+            <button onclick="limpar()">Limpar</button>
         </div>
         <div>
             <table id="tabelaAlunos">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Notas</th>
+                        <th>1° Nota</th>
+                        <th>2° Nota</th>
                         <th>Média</th>
                         <th>Status</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody id="corpoTabela">
