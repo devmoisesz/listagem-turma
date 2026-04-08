@@ -8,13 +8,34 @@
 </head>
 <body>
     <header>
-        <h1>Turma</h1>
+        <h1>Listagem de Turma: Aprovados e Reprovados</h1>
     </header>
     <section>
-        <div>
-            <p>Informe nome do aluno: <input type="text" name="nome" id="nome"></p>
-            <p>Informe a Primeira Nota: <input type="number" name="nota1" id="nota1"></p>
-            <p>Informe a Segunda Nota: <input type="number" name="nota2" id="nota2"></p>
+            <h3>Informe a média de cada bimestre do aluno</h3>
+        <div class="campo">
+            <label for="">Nome do aluno:</label>
+            <input type="text" name="nome" id="nome">
+        </div>
+        
+        <div class="campo">
+            <label for="bim1">Primeiro Bimestre:</label> 
+            <input type="number" name="bim1" id="bim1">
+        </div>
+
+        <div class="campo">
+            <label for="bim2">Segundo Bimestre:</label>
+            <input type="number" name="bim2" id="bim2">
+        </div>
+
+        <div class="campo"> 
+            <label for="bim3">Terceiro Bimestre:</label>
+            <input type="number" name="bim3" id="bim3">
+        </div>
+
+        <div class="campo"> 
+            <label for="bim4">Quarto Bimestre:</label>
+            <input type="number" name="bim4" id="bim4">
+        </div>
             <button onclick="adicionar()">Adicionar</button>
             <button onclick="resultado()">Resultado</button>
             <button onclick="limpar()">Limpar</button>
@@ -23,11 +44,13 @@
             <table id="tabelaAlunos">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>1° Nota</th>
-                        <th>2° Nota</th>
-                        <th>Média</th>
-                        <th>Status</th>
+                        <th>Nome:</th>
+                        <th>1° Bimestre</th>
+                        <th>2° Bimestre</th>
+                        <th>3° Bimestre</th>
+                        <th>4° Bimestre</th>
+                        <th>Média:</th>
+                        <th>Status:</th>
                     </tr>
                 </thead>
                 <tbody id="corpoTabela">
@@ -35,7 +58,10 @@
                 </tbody>
             </table>
         </div>
+        <div id="resultado">
+            <!-- média da turma -->
+        </div>
     </section>
-    <script src="logic.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
