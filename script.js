@@ -1,12 +1,18 @@
 let alunos = []
+const nome = document.getElementById('nome') 
+const bim1 = document.getElementById('bim1')
+const bim2 = document.getElementById('bim2')
+const bim3 = document.getElementById('bim3')
+const bim4 = document.getElementById('bim4')
 
-function renderizarAlunos(){ //function para cadastrar os alunos na tabela
+function renderizarAlunos(){ 
     let corpo = document.getElementById('corpoTabela')
     corpo.innerHTML = ''
+    // Percorre cada aluno no array "alunos"
     alunos.forEach((aluno) => { 
-        //tr adiciona linha
-        //td adiciona coluna
+        // createElement('tr') == Cria uma nova linha na tabela
         let tr = document.createElement('tr') 
+        // Cria as colunas da linha e coloca os valores do aluno
         let tdNome = document.createElement('td') 
         tdNome.textContent = aluno.nome
         let td1Bim = document.createElement('td')
@@ -29,6 +35,7 @@ function renderizarAlunos(){ //function para cadastrar os alunos na tabela
             tdstatus.style.color = "blue"
         }
 
+        // Adiciona todas as colunas criadas na linha
         tr.appendChild(tdNome)
         tr.appendChild(td1Bim)
         tr.appendChild(td2Bim)
@@ -36,11 +43,13 @@ function renderizarAlunos(){ //function para cadastrar os alunos na tabela
         tr.appendChild(td4Bim)
         tr.appendChild(tdMedia)
         tr.appendChild(tdstatus)
+        // Adiciona a linha completa na tabela
         corpo.appendChild(tr)
     })
 }
-function verificarinput(a, b, c, d, e){ //function para verificar se o usuario deixou input vazio
-    //Se os inputs estiverem vazios, alerta na tabela, e retorna falso
+// Função para verificar se algum input está vazio
+function verificarinput(a, b, c, d, e){ 
+    // Se algum dos valores passados for vazio, mostra alerta e retorna falso
     if(a === "" || b === "" || c === "" || d === "" || e === ""){
         alert("[ERRO] FALTAM DADOS!, Preencha os Dados que estão faltando!")
         return false
@@ -49,7 +58,7 @@ function verificarinput(a, b, c, d, e){ //function para verificar se o usuario d
         return true
     }
 }
-function definirStatus(x){ //function para definir status do aluno
+function definirStatus(x){ 
     if(x >= 7){
         return "Aprovado"
     }
@@ -61,20 +70,11 @@ function definirStatus(x){ //function para definir status do aluno
 }
 
 function adicionar(){
-    // Manipulando o DOM, pega os valores digitados nos inputs do index.html
-    let nome = document.getElementById('nome') 
-    let bim1 = document.getElementById('bim1')
-    let bim2 = document.getElementById('bim2')
-    let bim3 = document.getElementById('bim3')
-    let bim4 = document.getElementById('bim4')
-
-    //se o valores passados pra função for falso execute == ! NÂO VERDADEIRO 
-    if(!verificarinput(nome.value, bim1.value, bim2.value, bim3.value, bim4.value)
-    ){ 
+    //Se algum campo estiver vazio, interrompe a função
+    if(!verificarinput(nome.value, bim1.value, bim2.value, bim3.value, bim4.value)){
         return
     }
-
-    const notas = [ //guarda as notas no array
+    const notas = [ 
         Number(bim1.value),
         Number(bim2.value),
         Number(bim3.value),
@@ -83,9 +83,9 @@ function adicionar(){
     
     let media = notas.reduce((acumulador, n) => acumulador + n, 0) / notas.length
     
-    let status = definirStatus(media)// chama a função pra definir status do aluno
+    let status = definirStatus(media)
     
-    //cria um objeto com valores que serão passado pro o array
+    // Cria um objeto representando o aluno com nome, notas, média e status
     const aluno = {
         nome: nome.value,
         primeirobimestre: Number(bim1.value),
@@ -95,7 +95,8 @@ function adicionar(){
         media: media,
         status: status
     }
-    alunos.push(aluno) //puxa os valores do objeto definidos acima para o array
+    // Adiciona o aluno criado ao array "alunos"
+    alunos.push(aluno) 
 
     renderizarAlunos()
     nome.value = ''
@@ -106,7 +107,13 @@ function adicionar(){
     nome.focus()
 }
 function resultado(){
+    // Primeiro verificar se algum aluno foi cadastrado
+    if(alunos.length === 0){
+        alert("[ERRO] Nenhum aluno cadastrado! Preencha os dados antes de ver o resultado")
+        return
+    }
     let res = document.getElementById('resultado')
+    //Filter para criar arrays separados com os alunos aprovados, reprovados e em recuperação
     const alunosAprovados = alunos.filter(alunoap =>{
         if(alunoap.status === "Aprovado"){
             return true
@@ -114,14 +121,14 @@ function resultado(){
             return false
         }
     })
-    const alunosReprovados = alunos.filter(alunorep => {
+    const alunosReprovados = alunos.filter(alunorep =>{
         if(alunorep.status === "Reprovado"){
             return true
         } else{
             return false
         }
     })
-    const alunosRecuperacao = alunos.filter(alunorec => {
+    const alunosRecuperacao = alunos.filter(alunorec =>{
         if(alunorec.status === "Recuperação"){
             return true
         } else{
