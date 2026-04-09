@@ -19,22 +19,22 @@
         
         <div class="campo">
             <label for="bim1">Primeiro Bimestre:</label> 
-            <input type="number" name="bim1" id="bim1">
+            <input type="number" name="bim1" id="bim1" min="0" max="10">
         </div>
 
         <div class="campo">
             <label for="bim2">Segundo Bimestre:</label>
-            <input type="number" name="bim2" id="bim2">
+            <input type="number" name="bim2" id="bim2" min="0" max="10">
         </div>
 
         <div class="campo"> 
             <label for="bim3">Terceiro Bimestre:</label>
-            <input type="number" name="bim3" id="bim3">
+            <input type="number" name="bim3" id="bim3" min="0" max="10">
         </div>
 
         <div class="campo"> 
             <label for="bim4">Quarto Bimestre:</label>
-            <input type="number" name="bim4" id="bim4">
+            <input type="number" name="bim4" id="bim4" min="0" max="10">
         </div>
             <button onclick="adicionar()">Adicionar</button>
             <button onclick="resultado()">Resultado</button>
@@ -59,7 +59,7 @@
             </table>
         </div>
         <div id="resultado">
-            <!-- média da turma -->
+            
         </div>
     </section>
     <script src="script.js"></script>

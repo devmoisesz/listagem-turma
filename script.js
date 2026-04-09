@@ -74,6 +74,19 @@ function adicionar(){
     if(!verificarinput(nome.value, bim1.value, bim2.value, bim3.value, bim4.value)){
         return
     }
+    const nomeDuplicado = alunos.some(aluno => 
+        aluno.nome.toLowerCase() === nome.value.toLowerCase()
+    )
+    if(nomeDuplicado){
+        alert(`[ERRO] O aluno "${nome.value}" já está cadastrado!`)
+        nome.value = ''
+        bim1.value = ''
+        bim2.value = ''
+        bim3.value = ''
+        bim4.value = ''
+        nome.focus()
+        return
+    }
     const notas = [ 
         Number(bim1.value),
         Number(bim2.value),
@@ -99,17 +112,19 @@ function adicionar(){
     alunos.push(aluno) 
 
     renderizarAlunos()
+ 
     nome.value = ''
     bim1.value = ''
     bim2.value = ''
     bim3.value = ''
     bim4.value = ''
     nome.focus()
+ 
 }
 function resultado(){
     // Primeiro verificar se algum aluno foi cadastrado
     if(alunos.length === 0){
-        alert("[ERRO] Nenhum aluno cadastrado! Preencha os dados antes de ver o resultado")
+        alert("[ERRO] Nenhum aluno cadastrado! Cadastre algum aluno antes de ver o resultado")
         return
     }
     let res = document.getElementById('resultado')
