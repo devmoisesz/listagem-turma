@@ -150,6 +150,7 @@ function resultado(){
             return false
         }
     })
+    
     res.innerHTML = `${alunosAprovados.length} Alunos Aprovados<br>`
     res.innerHTML += `${alunosReprovados.length} Alunos Reprovados<br>`
     res.innerHTML += `${alunosRecuperacao.length} Alunos em Recuperação<br>`
