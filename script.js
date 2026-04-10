@@ -98,7 +98,6 @@ function adicionar(){
     
     let status = definirStatus(media)
     
-    // Cria um objeto representando o aluno com nome, notas, média e status
     const aluno = {
         nome: nome.value,
         primeirobimestre: Number(bim1.value),
@@ -108,7 +107,6 @@ function adicionar(){
         media: media,
         status: status
     }
-    // Adiciona o aluno criado ao array "alunos"
     alunos.push(aluno) 
 
     renderizarAlunos()
@@ -122,7 +120,6 @@ function adicionar(){
  
 }
 function resultado(){
-    // Primeiro verificar se algum aluno foi cadastrado
     if(alunos.length === 0){
         alert("[ERRO] Nenhum aluno cadastrado! Cadastre algum aluno antes de ver o resultado")
         return
